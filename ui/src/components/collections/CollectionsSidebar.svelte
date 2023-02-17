@@ -1,5 +1,8 @@
 <script>
     import { hideControls } from "@/stores/app";
+    import { link } from "svelte-spa-router";
+    import CommonHelper from "@/utils/CommonHelper";
+    import { showPageSidebar } from "@/stores/app";
     import { collections, activeCollection, isCollectionsLoading } from "@/stores/collections";
     import PageSidebar from "@/components/base/PageSidebar.svelte";
     import CollectionUpsertPanel from "@/components/collections/CollectionUpsertPanel.svelte";
@@ -98,6 +101,16 @@
                 <CollectionSidebarItem {collection} bind:pinnedIds />
             {/each}
         {/if}
+
+        {#each filteredCollections as collection (collection.id)}
+            <a
+                href="/collections?collectionId={collection.id}"
+                class="sidebar-list-item"
+                class:active={$activeCollection?.id === collection.id}
+                on:click={() => showPageSidebar.set(false)}
+                use:link
+            >
+                <i class={CommonHelper.getCollectionTypeIcon(collection.type)} />
 
         {#if unpinnedCollections.length}
             {#if pinnedCollections.length}

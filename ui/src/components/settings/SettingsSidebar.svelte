@@ -1,8 +1,13 @@
 <script>
     import { link } from "svelte-spa-router";
+    import { showPageSidebar } from "@/stores/app";
     import active from "svelte-spa-router/active";
     import PageSidebar from "@/components/base/PageSidebar.svelte";
     import { hideControls } from "@/stores/app";
+
+    function hideSidebar() {
+        showPageSidebar.set(false);
+    }
 </script>
 
 <PageSidebar class="settings-sidebar">
@@ -17,6 +22,7 @@
             class="sidebar-list-item"
             use:active={{ path: "/settings/mail/?.*" }}
             use:link
+            on:click={hideSidebar}
         >
             <i class="ri-send-plane-2-line" aria-hidden="true" />
             <span class="txt">Mail settings</span>
@@ -26,6 +32,7 @@
             class="sidebar-list-item"
             use:active={{ path: "/settings/storage/?.*" }}
             use:link
+            on:click={hideSidebar}
         >
             <i class="ri-archive-drawer-line" aria-hidden="true" />
             <span class="txt">Files storage</span>
@@ -70,6 +77,7 @@
             class="sidebar-list-item"
             use:active={{ path: "/settings/auth-providers/?.*" }}
             use:link
+            on:click={hideSidebar}
         >
             <i class="ri-lock-password-line" aria-hidden="true" />
             <span class="txt">Auth providers</span>
@@ -79,6 +87,7 @@
             class="sidebar-list-item"
             use:active={{ path: "/settings/tokens/?.*" }}
             use:link
+            on:click={hideSidebar}
         >
             <i class="ri-key-line" aria-hidden="true" />
             <span class="txt">Token options</span>
@@ -88,6 +97,7 @@
             class="sidebar-list-item"
             use:active={{ path: "/settings/admins/?.*" }}
             use:link
+            on:click={hideSidebar}
         >
             <i class="ri-shield-user-line" aria-hidden="true" />
             <span class="txt">Admins</span>

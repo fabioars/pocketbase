@@ -6,6 +6,7 @@
     import PageWrapper from "@/components/base/PageWrapper.svelte";
     import Field from "@/components/base/Field.svelte";
     import SettingsSidebar from "@/components/settings/SettingsSidebar.svelte";
+    import OpenSidebarButton from "@/components/base/OpenSidebarButton.svelte";
 
     $pageTitle = "Export collections";
 
@@ -93,6 +94,8 @@
 
 <PageWrapper>
     <header class="page-header">
+        <OpenSidebarButton />
+
         <nav class="breadcrumbs">
             <div class="breadcrumb-item">Settings</div>
             <div class="breadcrumb-item">{$pageTitle}</div>
